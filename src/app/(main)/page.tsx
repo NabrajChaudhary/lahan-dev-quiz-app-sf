@@ -1,11 +1,17 @@
-import QuizDemo from "@/modules/core/components/QuizDemo";
+import Features from "@/modules/core/components/Features";
+import NewsLetter from "@/modules/core/components/NewsLetter";
+import QuizSteps from "@/modules/core/components/Steps";
+import SubjectCoverage from "@/modules/core/components/SubjectCoverage";
 import TwoColumnBlock from "@/modules/core/components/TwoColumnBlock";
 
 export default function Home() {
   return (
     <>
       <TwoColumnBlock />
-      <QuizDemo />
+      <Features />
+      <SubjectCoverage />
+      <QuizSteps />
+      <NewsLetter />
     </>
   );
 }

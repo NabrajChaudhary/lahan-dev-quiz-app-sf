@@ -7,7 +7,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -25,14 +24,11 @@ export default function MobileNav() {
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+      <SheetContent side="right" className="w-[300px] sm:w-[400px] p-2">
         <SheetHeader className="mb-6">
           <SheetTitle className="flex items-center gap-2">
-            <span className="text-xl font-bold">NepalQuiz</span>
+            <span className="text-xl font-bold">lahanQuiz</span>
           </SheetTitle>
-          <SheetDescription>
-            Your path to success in CTEVT & Plus Two exams
-          </SheetDescription>
         </SheetHeader>
         <nav className="flex flex-col space-y-4">
           <SheetClose asChild>

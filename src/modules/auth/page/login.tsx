@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Card } from "@/modules/core/components/ui/card";
 import { Button } from "@/modules/core/components/ui/button";
 import { NEXT_PUBLIC_API_URL } from "@/constants/env.constant";
+import GoogleSignInButton from "../components/GoogleSignInButton";
 
 export default function SignInForm() {
   console.log("🚀 ~ NEXT_PUBLIC_API_URL:", NEXT_PUBLIC_API_URL);
@@ -15,12 +16,7 @@ export default function SignInForm() {
   const handleGoogleSignIn = async () => {
     try {
       setIsLoading(true);
-
-      // Redirect to the Express backend's Google auth route
       window.location.href = `${NEXT_PUBLIC_API_URL}/auth/google`;
-
-      // Note: The redirect will happen, so the code below won't execute immediately
-      // It will only run if there's an error with the redirect
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -40,20 +36,21 @@ export default function SignInForm() {
           Sign in with your Google account to access your personalized quiz
           dashboard
         </div>
-        <Button
+        <GoogleSignInButton onClick={handleGoogleSignIn} disabled={isLoading} />
+        {/* <Button
           variant="outline"
           type="button"
           disabled={isLoading}
           onClick={handleGoogleSignIn}
           className="bg-white hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-900 border border-gray-300 dark:border-gray-700"
-        >
-          {/* {isLoading ? (
+        > */}
+        {/* {isLoading ? (
             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
           ) : (
             <Icons.google className="mr-2 h-4 w-4" />
           )}{" "} */}
-          Sign in with Google
-        </Button>
+        {/* Sign in with Google
+        </Button> */}
       </Card>
 
       <div className="relative">
