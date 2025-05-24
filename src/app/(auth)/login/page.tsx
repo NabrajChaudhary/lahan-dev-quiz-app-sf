@@ -27,7 +27,7 @@ const LoginPage = () => {
           className="absolute inset-0 object-cover z-0 opacity-30"
         /> */}
         <Image
-          src="/nepali-students-studying.png"
+          src="/QMark.png"
           alt="Students studying"
           fill
           className="absolute inset-0 object-cover z-0 opacity-30"
@@ -36,12 +36,7 @@ const LoginPage = () => {
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col space-y-2 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">
-              Welcome back
-            </h1>
-            <p className="text-sm text-muted-foreground">
-              Sign in to your account to continue your exam preparation
-            </p>
+            <h1 className="text-4xl font-bold tracking-tight">Welcome back</h1>
           </div>
           <SignInForm />
           <p className="px-8 text-center text-sm text-muted-foreground">

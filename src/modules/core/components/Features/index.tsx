@@ -20,7 +20,7 @@ const Features = () => {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid  items-center gap-6 py-12 lg:grid-cols-4">
+        <div className="mx-auto grid  items-center gap-6 py-12 lg:grid-cols-3">
           <div className="flex flex-col items-center space-y-4 rounded-lg bg-white dark:bg-gray-950 p-8 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 border-t-4 border-purple-500">
             <div className="rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-3 shadow-md">
               <Target className="h-6 w-6 text-white" />

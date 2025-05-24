@@ -15,7 +15,7 @@ export default function GoogleSignInButton({
     <Button
       type="button"
       variant="outline"
-      className={`relative h-12 w-full max-w-xs rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${className}`}
+      className={`relative text-center h-12 w-full max-w-xs rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${className}`}
       onClick={onClick}
       disabled={disabled}
       onMouseEnter={() => setIsHovered(true)}

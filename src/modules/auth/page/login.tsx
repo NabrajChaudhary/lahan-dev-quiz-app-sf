@@ -9,7 +9,6 @@ import { NEXT_PUBLIC_API_URL } from "@/constants/env.constant";
 import GoogleSignInButton from "../components/GoogleSignInButton";
 
 export default function SignInForm() {
-  console.log("🚀 ~ NEXT_PUBLIC_API_URL:", NEXT_PUBLIC_API_URL);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -31,7 +30,7 @@ export default function SignInForm() {
 
   return (
     <div className="grid gap-6">
-      <Card className="p-5 flex flex-col space-y-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 border-0 shadow-md">
+      <Card className="p-5 flex flex-col  items-center  space-y-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 border-0 shadow-md">
         <div className="text-sm text-center text-muted-foreground">
           Sign in with your Google account to access your personalized quiz
           dashboard

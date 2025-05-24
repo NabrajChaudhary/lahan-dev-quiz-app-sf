@@ -51,7 +51,7 @@ export default function MobileNav() {
           </SheetClose>
           <SheetClose asChild>
             <Link
-              href="#demo"
+              href="/quiz"
               className="flex items-center py-2 text-base font-medium border-b border-border"
               onClick={() => setOpen(false)}
             >
@@ -65,14 +65,7 @@ export default function MobileNav() {
               onClick={() => setOpen(false)}
               asChild
             >
-              <Link href="/login">Log in</Link>
-            </Button>
-            <Button
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-              onClick={() => setOpen(false)}
-              asChild
-            >
-              <Link href="/signin">Sign up</Link>
+              <Link href="/login">Sign in</Link>
             </Button>
           </div>
         </nav>

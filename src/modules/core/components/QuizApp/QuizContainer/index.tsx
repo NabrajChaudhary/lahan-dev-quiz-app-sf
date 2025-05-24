@@ -123,8 +123,8 @@ export default function QuizContainer() {
 
   if (!quizStarted) {
     return (
-      <Card className="w-full max-w-lg shadow-lg">
-        <CardHeader className="text-center bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-t-lg">
+      <Card className="w-full max-w-lg shadow-lg pt-0">
+        <CardHeader className="text-center bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-t-lg py-2">
           <CardTitle className="text-2xl font-bold">
             Welcome to the Quiz!
           </CardTitle>

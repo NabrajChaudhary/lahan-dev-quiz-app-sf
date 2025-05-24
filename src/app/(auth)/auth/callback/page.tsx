@@ -8,7 +8,6 @@ import { setCookie } from "js-cookie-helper";
 export default function AuthCallback() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  console.log("🚀 ~ AuthCallback ~ searchParams:", searchParams);
   const [status, setStatus] = useState<"loading" | "success" | "error">(
     "loading"
   );

@@ -7,9 +7,12 @@ import MobileNav from "./MobileNav";
 
 // import Headroom from "react-headroom";
 import dynamic from "next/dynamic";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
+import ProfileCard from "../ProfileCard";
 const Headroom = dynamic(() => import("react-headroom"));
 
 const Header = () => {
+  const { user } = useAuth();
   return (
     <Headroom>
       <div className="flex flex-col mx-auto">
@@ -29,23 +32,25 @@ const Header = () => {
                 Features
               </Link>
               <Link
-                href="#exams"
+                href="#steps"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-4 py-2"
               >
-                Exams
+                Steps
               </Link>
               <Link
-                href="#demo"
+                href="/quiz"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-4 py-2"
               >
                 Demo
               </Link>
-              <Button variant="outline" className="mr-2" asChild>
-                <Link href="/login">Log in</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/signin">Sign up</Link>
-              </Button>
+
+              {user ? (
+                <ProfileCard />
+              ) : (
+                <Button asChild>
+                  <Link href="/login">Sign in</Link>
+                </Button>
+              )}
             </nav>
 
             {/* Mobile Navigation Toggle */}
