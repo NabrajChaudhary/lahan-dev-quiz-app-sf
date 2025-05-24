@@ -23,7 +23,7 @@ const ProfileCard = () => {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="flex items-center gap-2 px-3 py-1 h-auto "
+          className="gap-2 px-3 py-1 h-auto  outline-none flex justify-start items-center"
         >
           <Avatar className="h-10 w-10">
             <AvatarImage

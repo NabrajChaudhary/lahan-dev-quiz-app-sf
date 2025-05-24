@@ -29,7 +29,7 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-6 p-3">
       <Card className="p-5 flex flex-col  items-center  space-y-4 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 border-0 shadow-md">
         <div className="text-sm text-center text-muted-foreground">
           Sign in with your Google account to access your personalized quiz
