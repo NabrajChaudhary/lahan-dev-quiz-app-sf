@@ -21,7 +21,7 @@ const NewsLetter = () => {
               </p>
             </div>
             <div className="w-full max-w-sm space-y-2">
-              <form className="flex flex-col gap-2 sm:flex-row">
+              <form className="flex flex-col gap-2  w-full items-center">
                 <input
                   className="flex h-10 w-full rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-purple-600"
                   placeholder="Enter your email"
@@ -29,9 +29,9 @@ const NewsLetter = () => {
                 />
                 <Button
                   type="submit"
-                  className="sm:w-auto bg-white text-purple-600 hover:bg-white/90"
+                  className="sm:w-fit bg-white text-purple-600 hover:bg-white/90"
                 >
-                  Get Started
+                  Subscribe for newsletter
                 </Button>
               </form>
             </div>

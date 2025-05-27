@@ -13,10 +13,13 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex gap-4">
-          <Link href="#" className="text-sm underline underline-offset-4">
+          <Link href="/terms" className="text-sm underline underline-offset-4">
             Terms
           </Link>
-          <Link href="#" className="text-sm underline underline-offset-4">
+          <Link
+            href="/privacy"
+            className="text-sm underline underline-offset-4"
+          >
             Privacy
           </Link>
           <Link href="#" className="text-sm underline underline-offset-4">

@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { ChevronDown, LayoutDashboard, LogOut, User } from "lucide-react";
+import { ChevronDown, LogOut, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import {
@@ -14,9 +14,23 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 const ProfileCard = () => {
   const { user, unAuthenticate } = useAuth();
+
+  const router = useRouter();
+
+  const handleNavigation = (path: string) => {
+    if (path) {
+      router.push(path);
+    }
+
+    // In a real app, you would use your router here
+    // For Next.js: router.push(path)
+    // For React Router: navigate(path)
+  };
+
   return (
     // <div className="flex items-center justify-center min-h-screen bg-gray-50">
     <DropdownMenu>
@@ -33,7 +47,7 @@ const ProfileCard = () => {
             <AvatarFallback className="text-lg">
               {user?.firstName
                 .split(" ")
-                .map((n: any) => n[0])
+                .map((n: string) => n[0])
                 .join("")}
             </AvatarFallback>
           </Avatar>
@@ -56,19 +70,13 @@ const ProfileCard = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          // onClick={() => handleNavigation("/profile")}
+          onClick={() => handleNavigation("/profile")}
           className="cursor-pointer"
         >
           <User className="mr-2 h-4 w-4" />
           <span>Profile</span>
         </DropdownMenuItem>
-        <DropdownMenuItem
-          // onClick={() => handleNavigation("/dashboard")}
-          className="cursor-pointer"
-        >
-          <LayoutDashboard className="mr-2 h-4 w-4" />
-          <span>Dashboard</span>
-        </DropdownMenuItem>
+
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={unAuthenticate}

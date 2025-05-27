@@ -85,7 +85,7 @@ export default function MobileNav() {
 
           <SheetClose asChild>
             <Link
-              href="/home"
+              href="/"
               className="flex items-center py-2 text-base font-medium border-b border-border"
               onClick={() => setOpen(false)}
             >
