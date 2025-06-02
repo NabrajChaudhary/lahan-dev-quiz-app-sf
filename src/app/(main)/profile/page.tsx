@@ -93,8 +93,8 @@ const ProfilePage = () => {
                 <div className="flex justify-center mb-4">
                   <Avatar className="h-24 w-24">
                     <AvatarImage
-                      src={user.profilePhoto || "/placeholder.svg"}
-                      alt={`${user.firstName} ${user.lastName}`}
+                      src={user?.profilePhoto || "/placeholder.svg"}
+                      alt={`${user?.firstName} ${user?.lastName}`}
                     />
                     {/* <AvatarFallback className="text-2xl">
                       {user.firstName[0]}
@@ -110,15 +110,15 @@ const ProfilePage = () => {
                   </Avatar>
                 </div>
                 <CardTitle className="text-xl">
-                  {user.firstName} {user.lastName}
+                  {user?.firstName} {user?.lastName}
                 </CardTitle>
-                <CardDescription>{user.email}</CardDescription>
+                <CardDescription>{user?.email}</CardDescription>
                 <div className="flex gap-2 justify-center">
                   <Badge
                     variant="outline"
                     className="mt-2 capitalize text-md  px-2 py-1"
                   >
-                    {user.userType} Account
+                    {user?.userType} Account
                   </Badge>
                 </div>
               </CardHeader>
