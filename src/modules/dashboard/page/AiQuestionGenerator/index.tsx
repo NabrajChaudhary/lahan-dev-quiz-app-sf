@@ -44,6 +44,7 @@ type IProps = {
 };
 
 export default function AiQuestionGenerator({ categoryOptions }: IProps) {
+  console.log("🚀 ~ QUESTION_API_URL:", QUESTION_API_URL);
   const [state, action, isPending] = useActionState(generateQuestions, null);
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -54,7 +55,8 @@ export default function AiQuestionGenerator({ categoryOptions }: IProps) {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
   };
-
+  const questionUrl =
+    process.env.NEXT_PUBLIC_QUESTION_API_URL || QUESTION_API_URL || "";
   const clearPreviousQuestions = () => {
     document.cookie = "previousQuestions=; path=/; max-age=0";
     alert("Previous questions history cleared!");
@@ -143,7 +145,7 @@ export default function AiQuestionGenerator({ categoryOptions }: IProps) {
                     id="apiEndpoint"
                     name="apiEndpoint"
                     placeholder="https://your-api.com/questions"
-                    value={QUESTION_API_URL}
+                    value={questionUrl}
                     readOnly
                     required
                   />
