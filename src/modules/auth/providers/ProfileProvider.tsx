@@ -3,9 +3,10 @@
 import { publicAxios } from "@/modules/core/utils/axios";
 import React from "react";
 import { deleteCookie } from "js-cookie-helper";
+import { UserProfileType } from "@/modules/core/types/core.types";
 
 type ContextTypes = {
-  user: any | null;
+  user: UserProfileType | null;
   // authenticate?: () => void;
 
   unAuthenticate: () => Promise<unknown> | void;
@@ -39,7 +40,7 @@ async function clearAllSession() {
 }
 
 const ProfileProvider = ({ children, data }: Props) => {
-  const [user, setUser] = React.useState<any | null>(data);
+  const [user, setUser] = React.useState<UserProfileType | null>(data);
 
   const unAuthenticate = React.useCallback(() => {
     publicAxios.post("/auth/logout").then(() => {

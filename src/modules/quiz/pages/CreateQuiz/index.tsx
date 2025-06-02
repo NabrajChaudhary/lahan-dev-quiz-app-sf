@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/modules/core/components/ui/select";
 import { useFieldArray, useForm } from "react-hook-form";
-import axios from "axios";
+import { publicAxios } from "@/modules/core/utils/axios";
 
 // Zod schema for form validation
 const quizSchema = z.object({
@@ -42,6 +42,14 @@ const quizSchema = z.object({
     .min(1, "At least one question is required")
     .max(25, "Maximum 25 questions allowed"),
 });
+
+// const questionSchema = z.object({
+//   question: z.string().min(1, "Question is required"),
+//   category: z.string().min(1, "Category is required"),
+//   options: z.array(z.string()).length(4, "Options is required"),
+//   correctAnswer: z.string().min(1, "Correct answer is required"),
+//   explanation: z.string().optional(),
+// });
 
 type QuizFormData = z.infer<typeof quizSchema>;
 
@@ -80,31 +88,15 @@ const CreateQuizForm = ({
 
   const categoriesData = categories || [];
 
-  //   const categories = [
-  //     "General Knowledge",
-  //     "Science",
-  //     "History",
-  //     "Geography",
-  //     "Sports",
-  //     "Entertainment",
-  //     "Technology",
-  //     "Literature",
-  //     "Art",
-  //     "Music",
-  //     "Mathematics",
-  //     "Politics",
-  //     "Business",
-  //     "Health",
-  //     "Food & Cooking",
-  //     "Travel",
-  //     "Nature",
-  //     "Philosophy",
-  //     "Psychology",
-  //     "Other",
-  //   ];
-
   const addQuestion = () => {
-    axios.post("/questions/create", {});
+    // axios.post("/questions/create", {});
+    publicAxios.post("/questions/create", {
+      question: "Which invention is Thomas Edison famous for?",
+      category: "683311ca102cb99d4b8921a8",
+      options: ["Internet", "Light Bulb", "Telephone", "x-ray"],
+      correctAnswer: "Light Bulb",
+      explanation: "Test Explanationtest one",
+    });
     if (fields.length >= 25) {
       alert("Maximum 25 questions allowed");
       return;
@@ -156,8 +148,16 @@ const CreateQuizForm = ({
               />
             </div>
 
+            {/* Submit Button */}
+          </form>
+
+          <div className="py-2">
+            <h3 className="text-lg font-semibold">Questions</h3>
+          </div>
+
+          <form>
             {fields.map((field, questionIndex) => (
-              <Card key={field.id} className="relative">
+              <Card key={field.id} className="relative my-2">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-base">
@@ -221,7 +221,7 @@ const CreateQuizForm = ({
                     )}
                   </div>
 
-                  {/* Question Type */}
+                  {/* Question Type
                   <div className="space-y-2">
                     <Label>Question Type</Label>
                     <Select
@@ -243,7 +243,7 @@ const CreateQuizForm = ({
                         <SelectItem value="text">Text Answer</SelectItem>
                       </SelectContent>
                     </Select>
-                  </div>
+                  </div> */}
 
                   {/* Multiple Choice Options */}
                   {watch(`questions.${questionIndex}.type`) ===
@@ -313,7 +313,7 @@ const CreateQuizForm = ({
                     </div>
                   )}
 
-                  {/* Text Answer */}
+                  {/* Text Answer
                   {watch(`questions.${questionIndex}.type`) === "text" && (
                     <div className="space-y-2">
                       <Label
@@ -328,36 +328,36 @@ const CreateQuizForm = ({
                         placeholder="Enter expected answer"
                       />
                     </div>
-                  )}
+                  )} */}
                 </CardContent>
               </Card>
             ))}
+          </form>
 
-            {/* Questions */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Questions</h3>
-                <Button
-                  type="button"
-                  onClick={addQuestion}
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2"
-                  disabled={fields.length >= 25}
-                >
-                  <Plus className="h-4 w-4" />
-                  Add Question ({fields.length}/25)
-                </Button>
+          {/* Questions */}
+          <div className="space-y-4 py-4">
+            <div className="flex items-center justify-between">
+              <Button
+                type="button"
+                onClick={addQuestion}
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-2"
+                disabled={fields.length >= 25}
+              >
+                <Plus className="h-4 w-4" />
+                Add Question ({fields.length}/25)
+              </Button>
+
+              <div className=" mt-2">
+                <div className="flex justify-end   w-full">
+                  <Button type="submit" className="px-8 ">
+                    Create Quiz
+                  </Button>
+                </div>
               </div>
             </div>
-
-            {/* Submit Button */}
-            <div className="flex justify-end">
-              <Button type="submit" className="px-8">
-                Create Quiz
-              </Button>
-            </div>
-          </form>
+          </div>
         </CardContent>
       </Card>
     </div>

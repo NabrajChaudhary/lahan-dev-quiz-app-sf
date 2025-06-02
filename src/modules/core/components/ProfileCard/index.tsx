@@ -42,7 +42,7 @@ const ProfileCard = () => {
           <Avatar className="h-10 w-10">
             <AvatarImage
               src={user?.profilePhoto || "/placeholder.svg"}
-              alt={user.name}
+              alt={user?.firstName}
             />
             <AvatarFallback className="text-lg">
               {user?.firstName
@@ -53,7 +53,7 @@ const ProfileCard = () => {
           </Avatar>
           <div className="flex flex-col items-start">
             <span className="text-sm font-medium text-gray-900">
-              {user.firstName}
+              {user?.firstName}
             </span>
           </div>
           <ChevronDown className="h-4 w-4 text-gray-500" />
@@ -62,9 +62,11 @@ const ProfileCard = () => {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">{user.name}</p>
+            <p className="text-sm font-medium leading-none">
+              {user?.firstName}
+            </p>
             <p className="text-xs leading-none text-muted-foreground">
-              {user.email}
+              {user?.email}
             </p>
           </div>
         </DropdownMenuLabel>

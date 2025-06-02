@@ -13,7 +13,6 @@ const Headroom = dynamic(() => import("react-headroom"));
 
 const Header = () => {
   const { user } = useAuth();
-  console.log("🚀 ~ Header ~ user:", user);
   return (
     <Headroom>
       <div className="flex flex-col mx-auto">

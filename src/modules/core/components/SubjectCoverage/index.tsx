@@ -1,6 +1,8 @@
+import { getQuizCategories } from "@/modules/dashboard/services/quiz-categories.services";
 import React from "react";
 
-const SubjectCoverage = () => {
+const SubjectCoverage = async () => {
+  const categories = await getQuizCategories();
   return (
     <section
       className="w-full py-12 md:py-24 bg-gradient-to-br from-purple-50 via-background to-blue-50 dark:from-purple-950/20 dark:via-background dark:to-blue-950/20"
@@ -21,17 +23,9 @@ const SubjectCoverage = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-          {[
-            "General Knowledge",
-            "Nepal History",
-            "World History",
-            "Science & Technology",
-            "Politics",
-            "Social Studies",
-            "Health",
-          ].map((subject, index) => (
+          {categories.data.map((item, index: number) => (
             <div
-              key={subject}
+              key={index}
               className={`flex items-center justify-center rounded-lg bg-white dark:bg-gray-950 p-4 shadow-md hover:shadow-lg transition-all hover:-translate-y-1 border-l-4 ${
                 index % 3 === 0
                   ? "border-purple-500"
@@ -40,7 +34,7 @@ const SubjectCoverage = () => {
                   : "border-pink-500"
               }`}
             >
-              <span className="font-medium">{subject}</span>
+              <span className="font-medium">{item.title}</span>
             </div>
           ))}
         </div>

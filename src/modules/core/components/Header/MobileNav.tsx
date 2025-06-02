@@ -45,7 +45,7 @@ export default function MobileNav() {
                   <Avatar className="h-20 w-20">
                     <AvatarImage
                       src={user?.profilePhoto || "/placeholder.svg"}
-                      alt={user.name}
+                      alt={user.firstName}
                     />
                     <AvatarFallback className="text-lg">
                       {user?.firstName

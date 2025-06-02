@@ -5,7 +5,6 @@ export function middleware(request: NextRequest) {
 
   const authToken = request.cookies.get("auth-token")?.value;
 
-  // console.log("🚀 ~ middleware ~ request:", request);
   const isAuthPath = AuthPath.some((route) => pathname.startsWith(route));
   const isAdminPath = adminPath.some((route) => pathname.startsWith(route));
 
