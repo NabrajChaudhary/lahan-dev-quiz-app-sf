@@ -1,0 +1,9 @@
+export const EMAIL = "email";
+export const TEXT = "text";
+export const NUMBER = "number";
+export const TEXTAREA = "textarea";
+export const SWITCH = "switch";
+export const SELECT = "select";
+export const DATE = "date";
+export const PASSWORD = "password";
+export const FILE = "file";

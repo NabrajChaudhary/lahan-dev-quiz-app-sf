@@ -12,3 +12,17 @@ export const getQuizCategories = async () => {
 
   return (await response.json()) as CategoryResponse;
 };
+
+export const getAllQuizCategories = async (token?: string) => {
+  const response = await executeFetch("/categories/all", {
+    cache: "no-store",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) {
+    return notFound();
+  }
+
+  return (await response.json()) as CategoryResponse;
+};
