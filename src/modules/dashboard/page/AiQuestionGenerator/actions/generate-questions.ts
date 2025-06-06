@@ -19,6 +19,7 @@ const questionSchema = z.object({
       correctAnswer: z.string(),
       explanation: z.string(),
       difficulty: z.string(),
+      questionSlug: z.string(),
     })
   ),
 });
@@ -66,6 +67,7 @@ function isSimilarQuestion(
 export async function generateQuestions(prevState: any, formData: FormData) {
   try {
     const topic = formData.get("topic") as string;
+    const questionSlug = formData.get("questionSlug") as string;
     const categoryId = formData.get("categoryId") as string;
     const count = Number.parseInt(formData.get("count") as string);
     const difficulty = formData.get("difficulty") as string;
@@ -182,6 +184,7 @@ export async function generateQuestions(prevState: any, formData: FormData) {
         correctAnswer: question.correctAnswer,
         explanation: question.explanation,
         difficulty: question.difficulty,
+        questionSlug: questionSlug,
       };
 
       try {

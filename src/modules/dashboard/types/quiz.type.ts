@@ -19,6 +19,11 @@ export type QuizTypes = {
   quizByRole: string;
 };
 
+export type SingleQuizResponse = {
+  data: QuizTypes;
+  message: string;
+};
+
 export type QuizResponse = {
   data: Array<QuizTypes>;
   currentPage: number;

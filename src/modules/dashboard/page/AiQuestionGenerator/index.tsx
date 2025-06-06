@@ -103,13 +103,17 @@ export default function AiQuestionGenerator({ categoryOptions }: IProps) {
                 </div>
 
                 <div className="space-y-2">
+                  <Label htmlFor="questionSlug">Question Slug</Label>
+                  <Input
+                    id="questionSlug"
+                    name="questionSlug"
+                    placeholder=""
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor="categoryId">Select Category</Label>
-                  {/* <Input
-                    id="categoryId"
-                    name="categoryId"
-                    placeholder="e.g., 683311ca102cb99d4b8921a8"
-                    // required
-                  /> */}
                   <input
                     type="hidden"
                     name="categoryId"
