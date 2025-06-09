@@ -6,6 +6,7 @@ import { Toaster } from "@/modules/core/components/ui/sonner";
 import { cookies } from "next/headers";
 import { getProfile } from "@/modules/auth/services/auth.services";
 import AuthProvider from "@/modules/auth/providers/AuthProvider";
+import GoogleAdsense from "@/modules/core/components/GoogleAdsene";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default async function RootLayout({
         <AuthProvider data={auth?.data || null}>{children}</AuthProvider>
         <Toaster />
       </body>
+      <GoogleAdsense pId="7140211619056785" />
     </html>
   );
 }
