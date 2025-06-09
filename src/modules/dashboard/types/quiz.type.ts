@@ -8,7 +8,7 @@ export type QuizTypes = {
   difficulty: "easy" | "medium" | "hard";
   timeLimit: number;
   numberOfQuestions: number;
-  questions: Array<QuestionsItems | string>;
+  questions: Array<QuestionsItems>;
   quizBy:
     | string
     | {

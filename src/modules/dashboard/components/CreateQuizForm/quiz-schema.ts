@@ -4,6 +4,8 @@ export const formSchema = z.object({
   title: z.string().min(5, { message: "Quiz title is required" }),
   quizBy: z.string().min(5, { message: "User is required" }),
   description: z.string(),
+  category: z.string(),
+  questionSlug: z.string(),
   difficulty: z.enum(["easy", "medium", "hard"], {
     message: "Difficulty is required",
   }),

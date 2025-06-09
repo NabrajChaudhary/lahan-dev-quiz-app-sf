@@ -36,20 +36,6 @@ export default function SignInForm() {
           dashboard
         </div>
         <GoogleSignInButton onClick={handleGoogleSignIn} disabled={isLoading} />
-        {/* <Button
-          variant="outline"
-          type="button"
-          disabled={isLoading}
-          onClick={handleGoogleSignIn}
-          className="bg-white hover:bg-gray-50 dark:bg-gray-950 dark:hover:bg-gray-900 border border-gray-300 dark:border-gray-700"
-        > */}
-        {/* {isLoading ? (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <Icons.google className="mr-2 h-4 w-4" />
-          )}{" "} */}
-        {/* Sign in with Google
-        </Button> */}
       </Card>
 
       <div className="relative">

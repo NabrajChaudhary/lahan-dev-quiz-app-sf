@@ -1,3 +1,4 @@
+import QuizContainer from "@/modules/core/components/QuizApp/QuizContainer";
 import { Badge } from "@/modules/core/components/ui/badge";
 import { formatTime } from "@/modules/core/utils/formatTime";
 import { getQuizById } from "@/modules/dashboard/services/quiz.services";
@@ -11,9 +12,9 @@ const QuizPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const getQuiz = await getQuizById((await params).id, token?.value);
   const { data: quiz } = getQuiz;
-  console.log("🚀 ~ QuizPage ~ quiz:", quiz);
+  const { questions } = quiz;
   return (
-    <div className="container mx-auto px-4 py-8 h-screen min-h-full">
+    <div className="container mx-auto px-4 py-8  min-h-full h-auto flex flex-col items-center">
       {/* Quiz Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold">{quiz.title}</h1>
@@ -35,6 +36,7 @@ const QuizPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           </Badge>
         </div>
       </div>
+      <QuizContainer quizData={questions} />
     </div>
   );
 };

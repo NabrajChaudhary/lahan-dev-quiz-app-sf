@@ -16,6 +16,17 @@ export const getAllQuiz = async (token?: string) => {
   return (await response.json()) as QuizResponse;
 };
 
+export const getQuizesById = async (id?: string) => {
+  const response = await executeFetch(`/quiz/${id}/category`, {
+    cache: "force-cache",
+  });
+  if (!response.ok) {
+    return notFound();
+  }
+
+  return (await response.json()) as QuizResponse;
+};
+
 export const getQuizById = async (id: string, token?: string) => {
   const response = await executeFetch(`/quiz/${id}`, {
     cache: "force-cache",

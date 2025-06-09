@@ -4,12 +4,12 @@ import { CheckCircle2, XCircle, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import { RadioGroup, RadioGroupItem } from "../../ui/radio-group";
 import { Label } from "../../ui/label";
-import { QuizQuestion } from "@/modules/core/types/quiz";
+import { QuestionsItems } from "@/modules/dashboard/types/questions.type";
 
 interface QuestionCardProps {
-  question: QuizQuestion;
-  selectedAnswer: string | undefined;
-  onAnswerSelect: (questionId: number, answerId: string) => void;
+  question: QuestionsItems;
+  selectedAnswer: string;
+  onAnswerSelect: (questionId: string, answerId: string) => void;
   answerChecked: boolean;
   isTimedOut: boolean;
 }
@@ -38,12 +38,12 @@ export default function QuestionCard({
 
         <RadioGroup
           value={selectedAnswer}
-          onValueChange={(value) => onAnswerSelect(question.id, value)}
+          onValueChange={(value) => onAnswerSelect(question._id, value)}
           className="space-y-3"
         >
-          {question.answers.map((answer) => {
-            const isSelected = selectedAnswer === answer.id;
-            const isCorrect = answer.id === question.correctAnswer;
+          {question.options.map((answer) => {
+            const isSelected = selectedAnswer === answer;
+            const isCorrect = answer === question.correctAnswer;
             const isWrong =
               isSelected && !isCorrect && answerChecked && !isTimedOut;
 
@@ -72,15 +72,15 @@ export default function QuestionCard({
 
             return (
               <div
-                key={answer.id}
+                key={answer}
                 className={`flex items-center space-x-2 rounded-lg ${borderClass} p-4 cursor-pointer transition-all duration-200 ${bgClass}`}
                 onClick={() =>
-                  !answerChecked && onAnswerSelect(question.id, answer.id)
+                  !answerChecked && onAnswerSelect(question._id, answer)
                 }
               >
                 <RadioGroupItem
-                  value={answer.id}
-                  id={answer.id}
+                  value={answer}
+                  id={answer}
                   className={
                     isCorrect && answerChecked && !isTimedOut
                       ? "text-green-600"
@@ -91,10 +91,10 @@ export default function QuestionCard({
                   disabled={answerChecked}
                 />
                 <Label
-                  htmlFor={answer.id}
+                  htmlFor={answer}
                   className="flex-grow cursor-pointer font-medium"
                 >
-                  {answer.text}
+                  {answer}
                 </Label>
                 {answerChecked && !isTimedOut && isCorrect && (
                   <span className="text-green-500 ml-2">

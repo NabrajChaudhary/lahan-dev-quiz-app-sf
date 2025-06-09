@@ -99,11 +99,13 @@ const QuizCardBlock = ({ quizes }: Props) => {
       </div>
 
       {/* Empty State */}
-      {/* {filteredQuizzes.length === 0 && (
+      {quizes.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-muted-foreground">No quizzes found in the selected category.</p>
+          <p className="text-muted-foreground">
+            No quizzes found in the selected category.
+          </p>
         </div>
-      )} */}
+      )}
     </>
   );
 };

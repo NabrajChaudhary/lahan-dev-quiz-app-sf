@@ -2,24 +2,47 @@
 import { cn } from "@/lib/utils";
 import { CategoryItems } from "@/modules/dashboard/types/quiz-categories.type";
 import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useTransition } from "react";
 
 type Props = {
   categories: Array<CategoryItems>;
 };
 
 const QuizCategory = ({ categories }: Props) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  // const categoryParam = searchParams.get("category");
   const [selectedCategory, setSelectedCategory] = React.useState("all");
+  const [isPending, startTransition] = useTransition();
 
-  //   const handleQuizSelect = (quizId: number) => {
-  //     console.log(`Selected quiz with ID: ${quizId}`);
-  //     // Here you would typically navigate to the quiz or fetch quiz details
-  //     alert(`Quiz ID ${quizId} selected!`);
-  //   };
+  // const handleCategoryChange = (categoryId: string) => {
+  //   const params = new URLSearchParams(searchParams);
+  //   setSelectedCategory(categoryId);
+  //   if (categoryId === "all") {
+  //     params.delete("category");
+  //   } else {
+  //     params.set("category", categoryId);
+  //   }
 
-  const filteredQuizzes =
-    selectedCategory === "all"
-      ? categories
-      : categories.filter((quiz) => quiz.category_slug === selectedCategory);
+  //   // Update the URL without refreshing the page
+  //   router.push(`?${params.toString()}`, { scroll: false });
+  // };
+
+  const handleCategoryChange = (categoryId: string) => {
+    startTransition(() => {
+      const params = new URLSearchParams(searchParams);
+      setSelectedCategory(categoryId || "all");
+      if (categoryId === "all") {
+        params.delete("category");
+      } else {
+        params.set("category", categoryId);
+      }
+
+      // Update the URL without refreshing the page
+      router.push(`?${params.toString()}`, { scroll: false });
+    });
+  };
 
   return (
     <>
@@ -29,7 +52,8 @@ const QuizCategory = ({ categories }: Props) => {
           aria-label="Categories"
         >
           <button
-            onClick={() => setSelectedCategory("all")}
+            onClick={() => handleCategoryChange("all")}
+            disabled={isPending}
             className={cn(
               "whitespace-nowrap px-4 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer ",
               selectedCategory === "all"
@@ -42,7 +66,8 @@ const QuizCategory = ({ categories }: Props) => {
           {categories.map((category) => (
             <button
               key={category._id}
-              onClick={() => setSelectedCategory(category._id)}
+              onClick={() => handleCategoryChange(category._id)}
+              disabled={isPending}
               className={cn(
                 "whitespace-nowrap px-4 py-2 text-sm font-medium rounded-lg transition-colors cursor-pointer ",
                 selectedCategory === category._id
@@ -58,7 +83,7 @@ const QuizCategory = ({ categories }: Props) => {
 
       {/* Results count */}
       <div className="mb-6">
-        <p className="text-sm text-muted-foreground">
+        {/* <p className="text-sm text-muted-foreground">
           {selectedCategory === "all" ? (
             <>Showing all {filteredQuizzes.length} quizzes</>
           ) : (
@@ -70,7 +95,7 @@ const QuizCategory = ({ categories }: Props) => {
               </span>
             </>
           )}
-        </p>
+        </p> */}
       </div>
     </>
   );
