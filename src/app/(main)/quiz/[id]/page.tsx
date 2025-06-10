@@ -12,7 +12,7 @@ const QuizPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const getQuiz = await getQuizById((await params).id, token?.value);
   const { data: quiz } = getQuiz;
-  const { questions } = quiz;
+  const { questions, _id } = quiz;
   return (
     <div className="container mx-auto px-4 py-8  min-h-full h-auto flex flex-col items-center">
       {/* Quiz Header */}
@@ -36,7 +36,7 @@ const QuizPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           </Badge>
         </div>
       </div>
-      <QuizContainer quizData={questions} />
+      <QuizContainer quizData={questions} quizId={_id} />
     </div>
   );
 };

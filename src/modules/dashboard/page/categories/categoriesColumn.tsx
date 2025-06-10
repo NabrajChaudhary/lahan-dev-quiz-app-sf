@@ -81,7 +81,13 @@ export default function CategoryColumnsProvider() {
       accessorKey: "description",
       header: "Description",
       cell: ({ row }) => {
-        return <div>{row.getValue("description")}</div>;
+        return (
+          <div className="w-[250px] text-ellipsis">
+            <div className="line-clamp-3 text-sm leading-relaxed text-ellipsis">
+              {row.getValue("description")}
+            </div>
+          </div>
+        );
       },
     },
     {

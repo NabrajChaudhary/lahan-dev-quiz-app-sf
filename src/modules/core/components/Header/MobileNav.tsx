@@ -93,7 +93,7 @@ export default function MobileNav() {
             </Link>
           </SheetClose>
 
-          <SheetClose asChild>
+          {/* <SheetClose asChild>
             <Link
               href="#features"
               className="flex items-center py-2 text-base font-medium border-b border-border"
@@ -110,14 +110,14 @@ export default function MobileNav() {
             >
               Exams
             </Link>
-          </SheetClose>
+          </SheetClose> */}
           <SheetClose asChild>
             <Link
               href="/quiz"
               className="flex items-center py-2 text-base font-medium border-b border-border"
               onClick={() => setOpen(false)}
             >
-              Demo
+              Quiz
             </Link>
           </SheetClose>
           {!user ? (

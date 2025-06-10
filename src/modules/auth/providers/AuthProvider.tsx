@@ -1,25 +1,67 @@
 "use client";
 
-import React from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
 
-// import { SessionProvider } from "next-auth/react";
+import { getCookie } from "js-cookie-helper";
 import ProfileProvider from "./ProfileProvider";
+import { publicAxios } from "@/modules/core/utils/axios";
+import type { UserProfileType } from "@/modules/core/types/core.types";
 
-// import { ProfileUser } from '../types/user.types';
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [profileData, setProfileData] = useState<UserProfileType | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  console.log("🚀 ~ AuthProvider ~ isLoading:", isLoading);
 
-// import ProfileProvider from './ProfileProvider';
+  const fetchProfile = async () => {
+    const authToken = getCookie("auth-token");
 
-const AuthProvider = ({
-  children,
-  data,
-}: {
-  children: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any | null;
-}) => {
+    if (!authToken) {
+      setProfileData(null);
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const response = await publicAxios.get("/auth/profile");
+      setProfileData(response.data.data);
+    } catch (error) {
+      console.error("Failed to fetch profile:", error);
+      setProfileData(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // Initial profile fetch on mount
+    fetchProfile();
+
+    // Listen for custom auth events
+    const handleAuthSuccess = () => {
+      // Small delay to ensure cookies are set
+      setTimeout(() => {
+        fetchProfile();
+      }, 100);
+    };
+
+    const handleAuthLogout = () => {
+      setProfileData(null);
+    };
+
+    window.addEventListener("auth:success", handleAuthSuccess);
+    window.addEventListener("auth:logout", handleAuthLogout);
+
+    return () => {
+      window.removeEventListener("auth:success", handleAuthSuccess);
+      window.removeEventListener("auth:logout", handleAuthLogout);
+    };
+  }, []);
+
   return (
-    // <SessionProvider refetchInterval={30}>
-    <ProfileProvider data={data}>{children}</ProfileProvider>
+    // <SessionProvider>
+    <ProfileProvider data={profileData}>{children}</ProfileProvider>
     // </SessionProvider>
   );
 };

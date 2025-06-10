@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from "next/navigation";
 import { executeFetch } from "@/lib/execute-fetch";
+import { ProfileResponse } from "@/modules/profile/types/user-profile.type";
 
 export const getGoogleLogin = async () => {
   const response = await executeFetch("/auth/google", {
-    cache: "no-store",
     next: {
       tags: ["google"],
     },
@@ -16,17 +15,17 @@ export const getGoogleLogin = async () => {
   return (await response.json()) as any;
 };
 
-export const getProfile = async ({ token }: { token?: string }) => {
+export const getProfile = async (token?: string) => {
   if (!token) {
-    console.log("No token provided. Skipping API call.");
     return null; // or throw an error or handle as needed
   }
 
   const response = await executeFetch("/auth/profile", {
-    cache: "no-store",
-    method: "get",
     headers: {
       Authorization: `Bearer ${token}`,
+    },
+    next: {
+      tags: ["google"],
     },
   });
 
@@ -34,5 +33,5 @@ export const getProfile = async ({ token }: { token?: string }) => {
     return notFound();
   }
 
-  return (await response.json()) as any;
+  return (await response.json()) as ProfileResponse;
 };

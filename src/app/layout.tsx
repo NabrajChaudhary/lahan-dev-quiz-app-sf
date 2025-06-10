@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { Toaster } from "@/modules/core/components/ui/sonner";
-import { cookies } from "next/headers";
-import { getProfile } from "@/modules/auth/services/auth.services";
+// import { cookies } from "next/headers";
+// import { getProfile } from "@/modules/auth/services/auth.services";
 import AuthProvider from "@/modules/auth/providers/AuthProvider";
 import GoogleAdsense from "@/modules/core/components/GoogleAdsene";
 
@@ -29,15 +29,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("auth-token");
-  const auth = await getProfile({ token: token?.value });
+  // const cookieStore = await cookies();
+  // const token = cookieStore.get("auth-token");
+  // const auth = await getProfile(token?.value);
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider data={auth?.data || null}>{children}</AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
         <Toaster />
       </body>
       <GoogleAdsense pId="7140211619056785" />

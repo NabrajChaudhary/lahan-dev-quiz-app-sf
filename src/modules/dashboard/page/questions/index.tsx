@@ -11,9 +11,7 @@ type Props = {
 };
 
 const QuestionsModule = ({ data }: Props) => {
-  console.log("🚀 ~ QuestionsModule ~ data:", data);
   const { data: QuestionsData } = data;
-  console.log("🚀 ~ QuestionsModule ~ QuestionsData:", QuestionsData);
   const columns = getQuestionsColumns();
   return (
     <>

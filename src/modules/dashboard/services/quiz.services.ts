@@ -4,9 +4,11 @@ import { QuizResponse, SingleQuizResponse } from "../types/quiz.type";
 
 export const getAllQuiz = async (token?: string) => {
   const response = await executeFetch("/quiz/", {
-    cache: "force-cache",
     headers: {
       Authorization: `Bearer ${token}`,
+    },
+    next: {
+      tags: ["quiz"],
     },
   });
   if (!response.ok) {

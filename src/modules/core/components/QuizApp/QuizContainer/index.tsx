@@ -17,8 +17,9 @@ import { usePathname, useRouter } from "next/navigation";
 
 type IProps = {
   quizData: Array<QuestionsItems>;
+  quizId: string;
 };
-export default function QuizContainer({ quizData }: IProps) {
+export default function QuizContainer({ quizData, quizId }: IProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<
     Record<string, string>
@@ -34,6 +35,12 @@ export default function QuizContainer({ quizData }: IProps) {
   const [showFeedback, setShowFeedback] = useState(false);
   const { user } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      setUserName(`${user.firstName} ${user.lastName}`);
+    }
+  }, [user]);
 
   const currentPath =
     typeof window !== "undefined" ? window.location.pathname : "/quiz";
@@ -61,7 +68,7 @@ export default function QuizContainer({ quizData }: IProps) {
     setTimeout(() => {
       moveToNextQuestion();
     }, 1500);
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, quizData]);
 
   const handleAnswerSelect = (questionId: string, answerId: string) => {
     if (answerChecked) return;
@@ -105,6 +112,7 @@ export default function QuizContainer({ quizData }: IProps) {
     setTimerActive(true);
     setTimedOutQuestions([]);
     setShowFeedback(false);
+    router.push("/quiz");
   };
 
   const calculateScore = () => {
@@ -208,6 +216,8 @@ export default function QuizContainer({ quizData }: IProps) {
         totalQuestions={quizData.length}
         onRestart={handleRestartQuiz}
         userName={userName}
+        submit={quizCompleted}
+        quizId={quizId}
       />
     );
   }
@@ -230,7 +240,7 @@ export default function QuizContainer({ quizData }: IProps) {
       </div>
 
       <Timer
-        duration={10}
+        duration={15}
         onTimeUp={handleTimeUp}
         isActive={timerActive}
         reset={timerReset}

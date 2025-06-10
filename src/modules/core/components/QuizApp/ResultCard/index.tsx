@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { CheckCircle2, XCircle, Trophy } from "lucide-react";
 import {
   Card,
@@ -9,12 +9,18 @@ import {
   CardTitle,
 } from "../../ui/card";
 import { Button } from "../../ui/button";
+import { publicAxios } from "@/modules/core/utils/axios";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/modules/auth/hooks/useAuth";
 
 interface ResultsCardProps {
   score: number;
   totalQuestions: number;
   onRestart: () => void;
   userName: string;
+  submit: boolean;
+  quizId: string;
 }
 
 export default function ResultsCard({
@@ -22,11 +28,41 @@ export default function ResultsCard({
   totalQuestions,
   onRestart,
   userName,
+  submit = false,
+  quizId,
 }: ResultsCardProps) {
+  const router = useRouter();
+
   const percentage = Math.round((score / totalQuestions) * 100);
+  const { user } = useAuth();
 
   let message = "";
   let icon = null;
+
+  const hasSubmittedRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (!submit || hasSubmittedRef.current || !user?.id) return;
+
+    hasSubmittedRef.current = true; // Prevent re-submission
+
+    const quizSubmitPayload = {
+      user: user.id,
+      quiz: quizId,
+      score,
+      scoreInPercentage: percentage,
+    };
+
+    publicAxios
+      .post("/quiz/attempt", quizSubmitPayload)
+      .then((res) => {
+        toast.success(res.data.message);
+        // router.push("/quiz");
+      })
+      .catch((err) => {
+        toast.error(err?.response?.data?.error || "Something went wrong");
+      });
+  }, [submit, user?.id, quizId, score, percentage, router]);
 
   if (percentage >= 80) {
     message = "Excellent! You're a quiz master!";
@@ -87,12 +123,12 @@ export default function ResultsCard({
               />
             </svg>
           </div>
-          <p className="text-xl font-medium mb-6">{message}</p>
+          <p className="text-lg font-medium mb-6">{message}</p>
           <Button
             onClick={onRestart}
             className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
           >
-            Try Again
+            Return to quizes
           </Button>
         </div>
       </CardContent>

@@ -43,7 +43,7 @@ const Header = () => {
                 href="/quiz"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-4 py-2"
               >
-                Demo
+                Quiz
               </Link>
 
               {user ? (

@@ -12,43 +12,51 @@ export default function AuthCallback() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const token = searchParams.get("token");
-    const userType = searchParams.get("userType");
-    const redirectTo = searchParams.get("redirect");
-    console.log("🚀 ~ useEffect ~ redirectTo:", redirectTo);
+    const handleAuth = async () => {
+      const token = searchParams.get("token");
+      const userType = searchParams.get("userType");
+      const redirectTo = searchParams.get("redirect");
 
-    if (!token) {
-      setStatus("error");
-      return;
-    }
+      if (!token) {
+        setStatus("error");
+        return;
+      }
 
-    setCookie("auth-token", token);
-    setCookie("user-type", userType || "");
+      try {
+        // Set cookies
+        setCookie("auth-token", token);
+        setCookie("user-type", userType || "");
 
-    // You can also decode and store user information
-    try {
-      const payload = JSON.parse(atob(token.split(".")[1]));
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          id: payload.sub,
-          email: payload.email,
-          name: payload.name,
-          type: payload.type,
-        })
-      );
+        // Decode and store user information
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            id: payload.sub,
+            email: payload.email,
+            name: payload.name,
+            type: payload.type,
+          })
+        );
 
-      setStatus("success");
-      setTimeout(() => {
-        // Check for redirect parameter from URL
-        const redirectUrl = searchParams.get("redirect");
+        setStatus("success");
 
-        router.push(redirectUrl || redirectTo || "/");
-      }, 1500);
-    } catch (error) {
-      console.error("Error processing token:", error);
-      setStatus("error");
-    }
+        // Dispatch custom event to trigger profile fetch in AuthProvider
+        window.dispatchEvent(new CustomEvent("auth:success"));
+
+        // Redirect after a short delay to allow profile fetch
+        setTimeout(() => {
+          const redirectUrl = searchParams.get("redirect");
+          router.push(redirectUrl || redirectTo || "/");
+          router.refresh();
+        }, 1500);
+      } catch (error) {
+        console.error("Error processing token:", error);
+        setStatus("error");
+      }
+    };
+
+    handleAuth();
   }, [searchParams, router]);
 
   return (

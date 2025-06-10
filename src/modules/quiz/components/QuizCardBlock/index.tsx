@@ -49,8 +49,8 @@ const QuizCardBlock = ({ quizes }: Props) => {
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="text-lg mb-2">{quiz.title}</CardTitle>
-                  <CardDescription className="text-sm">
+                  <CardTitle className="text-md mb-2">{quiz.title}</CardTitle>
+                  <CardDescription className="text-sm line-clamp-3 h-14">
                     {quiz.description}
                   </CardDescription>
                 </div>

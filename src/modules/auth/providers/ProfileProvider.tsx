@@ -3,12 +3,10 @@
 import { publicAxios } from "@/modules/core/utils/axios";
 import React from "react";
 import { deleteCookie } from "js-cookie-helper";
-import { UserProfileType } from "@/modules/core/types/core.types";
+import type { UserProfileType } from "@/modules/core/types/core.types";
 
 type ContextTypes = {
   user: UserProfileType | null;
-  // authenticate?: () => void;
-
   unAuthenticate: () => Promise<unknown> | void;
   setUser: React.Dispatch<React.SetStateAction<any | null>>;
 };
@@ -46,12 +44,17 @@ const ProfileProvider = ({ children, data }: Props) => {
     publicAxios.post("/auth/logout").then(() => {
       deleteCookie("auth-token");
 
+      // Dispatch logout event to notify AuthProvider
+      window.dispatchEvent(new CustomEvent("auth:logout"));
+
       clearAllSession().then(() => window.location.reload());
     });
   }, []);
 
   React.useEffect(() => {
-    if (!data) return;
+    if (data) {
+      setUser(data);
+    }
   }, [data]);
 
   return (

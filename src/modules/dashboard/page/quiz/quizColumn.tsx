@@ -47,7 +47,7 @@ export default function QuizColumnsProvider() {
         .put(`/quiz/${quizId}/status/`, { status: status })
         .then((data) => {
           toast.success(data.data.message);
-          router.refresh();
+          router.push("/dashboard/quiz");
         })
         .catch((data) => {
           toast.error(data.response.data.error);
@@ -120,7 +120,17 @@ export default function QuizColumnsProvider() {
       accessorKey: "description",
       header: "Description",
       cell: ({ row }) => {
-        return <div>{row.getValue("description")}</div>;
+        return (
+          // <div className="w-[300px] bg-red-300 text text-ellipsis">
+          //   {row.getValue("description")}
+          // </div>
+
+          <div className="w-[250px] text-ellipsis">
+            <div className="line-clamp-3 text-sm leading-relaxed text-ellipsis">
+              {row.getValue("description")}
+            </div>
+          </div>
+        );
       },
     },
     {
