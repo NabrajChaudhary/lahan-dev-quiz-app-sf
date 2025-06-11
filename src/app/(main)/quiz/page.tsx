@@ -29,7 +29,7 @@ const QuizPage = async ({
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 h-auto min-h-full ">
+    <div className="container mx-auto px-4 py-8 min-h-screen h-full ">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2 text-center">Quiz Collection</h1>
         <p className="text-muted-foreground mb-6 text-center">

@@ -42,10 +42,7 @@ const QuizCardBlock = ({ quizes }: Props) => {
     <>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {quizes.map((quiz) => (
-          <Card
-            key={quiz._id}
-            className="hover:shadow-lg transition-shadow cursor-pointer"
-          >
+          <Card key={quiz._id} className="hover:shadow-lg transition-shadow ">
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
@@ -87,7 +84,7 @@ const QuizCardBlock = ({ quizes }: Props) => {
 
                 {/* Start Quiz Button */}
                 <Button
-                  className="w-full mt-4"
+                  className="w-full mt-4 cursor-pointer"
                   onClick={() => handleQuizSelect(quiz._id)}
                 >
                   Start Quiz

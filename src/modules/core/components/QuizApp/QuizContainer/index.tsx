@@ -189,7 +189,7 @@ export default function QuizContainer({ quizData, quizId }: IProps) {
                 </div>
 
                 <Button
-                  className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+                  className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 cursor-pointer"
                   onClick={handleStartQuiz}
                 >
                   Start Quiz
