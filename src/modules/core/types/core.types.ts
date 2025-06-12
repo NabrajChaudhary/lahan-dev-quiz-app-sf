@@ -5,4 +5,5 @@ export type UserProfileType = {
   lastName: string;
   profilePhoto: string;
   userType: string;
+  role: "admin" | "google";
 };

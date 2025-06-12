@@ -46,8 +46,10 @@ export default function QuizContainer({ quizData, quizId }: IProps) {
     typeof window !== "undefined" ? window.location.pathname : "/quiz";
 
   const pathname = usePathname(); // Gets the current path (e.g., /dashboard)
+  console.log("🚀 ~ QuizContainer ~ pathname:", pathname);
 
   const handleRedirect = () => {
+    setCookie("redirect-url", pathname || "");
     const encodedPath = encodeURIComponent(currentPath || pathname);
     router.push(`/login?redirect=${encodedPath}`);
   };

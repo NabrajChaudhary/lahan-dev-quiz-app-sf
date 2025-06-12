@@ -13,6 +13,7 @@ import { publicAxios } from "@/modules/core/utils/axios";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/modules/auth/hooks/useAuth";
+import Link from "next/link";
 
 interface ResultsCardProps {
   score: number;
@@ -124,6 +125,10 @@ export default function ResultsCard({
             </svg>
           </div>
           <p className="text-lg font-medium mb-6">{message}</p>
+          <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
+            <Link href="/feedback">Give Feedback</Link>
+          </Button>
+
           <Button
             onClick={onRestart}
             className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"

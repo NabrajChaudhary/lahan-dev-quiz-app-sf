@@ -10,7 +10,12 @@ export async function middleware(request: NextRequest) {
   const isAdminPath = adminPath.some((route) => pathname.startsWith(route));
 
   // If no auth token and trying to access protected routes
-  if (!authToken && (isAdminPath || pathname.includes("/profile"))) {
+  if (
+    !authToken &&
+    (isAdminPath ||
+      pathname.includes("/profile") ||
+      pathname.includes("/feedback"))
+  ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -69,7 +74,7 @@ export async function middleware(request: NextRequest) {
 }
 
 const adminPath = ["/dashboard", "/admin"];
-const AuthPath = ["/login", "/forget-password"];
+const AuthPath = ["/login", "/forget-password", "/feedback"];
 
 export const config = {
   matcher: [
@@ -78,5 +83,6 @@ export const config = {
     "/profile/:path*",
     "/login",
     "/forget-password",
+    "/feedback",
   ],
 };

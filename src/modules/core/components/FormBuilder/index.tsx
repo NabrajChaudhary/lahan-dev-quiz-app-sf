@@ -13,6 +13,7 @@ import {
   FILE,
   NUMBER,
   PASSWORD,
+  RATING,
   SELECT,
   SWITCH,
   TEXT,
@@ -40,6 +41,7 @@ import {
   SelectValue,
 } from "@/modules/core/components/ui/select";
 import { cn } from "@/lib/utils";
+import { Rating } from "./RatingInput";
 
 type FormBuilderProps = {
   schema: ZodTypeAny;
@@ -322,7 +324,7 @@ const FormBuilder = ({
                             <FormControl>
                               <Textarea
                                 placeholder={item.placeholder || item.label}
-                                className="resize-y min-h-[100px] rounded-md"
+                                className="resize-y min-h-[200px] rounded-md"
                                 {...field}
                               />
                             </FormControl>
@@ -412,6 +414,28 @@ const FormBuilder = ({
                                 type="date"
                                 className="rounded-md placeholder:capitalize"
                                 {...field}
+                              />
+                            </FormControl>
+                            <FormMessage className="text-xs" />
+                          </FormItem>
+                        );
+                      }
+
+                      case RATING: {
+                        return (
+                          <FormItem
+                            className={clsx("transition-all", item.className)}
+                          >
+                            <FormLabel className="text-sm font-medium">
+                              {item.label}
+                            </FormLabel>
+                            <FormControl>
+                              <Rating
+                                value={field.value}
+                                onChange={field.onChange}
+                                size="lg"
+                                className="mt-2 ring-0 focus:ring-0 "
+                                max={5}
                               />
                             </FormControl>
                             <FormMessage className="text-xs" />

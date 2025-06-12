@@ -24,10 +24,6 @@ const ProfileCard = () => {
     if (path) {
       router.push(path);
     }
-
-    // In a real app, you would use your router here
-    // For Next.js: router.push(path)
-    // For React Router: navigate(path)
   };
 
   return (
@@ -77,6 +73,15 @@ const ProfileCard = () => {
           <User className="mr-2 h-4 w-4" />
           <span>Profile</span>
         </DropdownMenuItem>
+        {user?.role === "admin" && (
+          <DropdownMenuItem
+            onClick={() => handleNavigation("/dashboard")}
+            className="cursor-pointer"
+          >
+            <User className="mr-2 h-4 w-4" />
+            <span>Dashboard</span>
+          </DropdownMenuItem>
+        )}
 
         <DropdownMenuSeparator />
         <DropdownMenuItem
