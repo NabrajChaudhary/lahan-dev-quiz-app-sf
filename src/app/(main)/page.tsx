@@ -1,3 +1,4 @@
+import BlogSection from "@/modules/core/components/BlogsSection";
 import Features from "@/modules/core/components/Features";
 import NewsLetter from "@/modules/core/components/NewsLetter";
 import QuizSteps from "@/modules/core/components/Steps";
@@ -11,6 +12,7 @@ export default function Home() {
       <Features />
       <SubjectCoverage />
       <QuizSteps />
+      <BlogSection />
       <NewsLetter />
     </>
   );

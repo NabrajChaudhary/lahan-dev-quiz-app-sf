@@ -14,12 +14,7 @@ const QuizAttemptModule = ({ data }: Props) => {
   const columns = getQuizAttemptsColumns();
   return (
     <>
-      <DataTable
-        columns={columns}
-        data={quizData}
-        filterColumn="course_name"
-        filterPlaceholder="Search by Course Name"
-      />
+      <DataTable columns={columns} data={quizData || []} />
     </>
   );
 };

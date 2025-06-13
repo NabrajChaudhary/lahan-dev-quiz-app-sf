@@ -4,12 +4,15 @@ import type * as React from "react";
 import { usePathname } from "next/navigation";
 import {
   BarChart3,
-  Building2,
+  BookOpen,
   Calendar,
   ChevronUp,
   CreditCard,
   Inbox,
   LogOut,
+  MessageCircleCode,
+  Notebook,
+  ScrollText,
   User2,
   Users,
 } from "lucide-react";
@@ -48,6 +51,26 @@ const items = [
     icon: BarChart3,
   },
   {
+    title: "Generator",
+    url: "/dashboard/question-generator",
+    icon: CreditCard,
+  },
+  {
+    title: "Posts",
+    url: "/dashboard/posts",
+    icon: ScrollText,
+  },
+  {
+    title: "Posts Category",
+    url: "/dashboard/posts-category",
+    icon: Notebook,
+  },
+  {
+    title: "Reviews",
+    url: "/dashboard/reviews",
+    icon: MessageCircleCode,
+  },
+  {
     title: "Questions",
     url: "/dashboard/questions",
     icon: Users,
@@ -61,11 +84,6 @@ const items = [
     title: "Quiz Attempts",
     url: "/dashboard/quiz-attempt",
     icon: Calendar,
-  },
-  {
-    title: "Generator",
-    url: "/dashboard/question-generator",
-    icon: CreditCard,
   },
 ];
 
@@ -81,22 +99,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <Building2 className="size-4" />
+              <Link href="/">
+                <div className="flex gap-2 items-center text-xl font-bold">
+                  <BookOpen className="h-6 w-6 text-primary" />
+                  <span>LahanQuiz</span>
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
-                </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Platform</SidebarGroupLabel>
+          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

@@ -8,7 +8,11 @@ const QuizAttemptPage = async () => {
   const token = cookieStore.get("auth-token");
 
   const getQuizAttempts = await getAllQuizAttempts(token?.value);
-  return <QuizAttemptModule data={getQuizAttempts} />;
+  return (
+    <>
+      <QuizAttemptModule data={getQuizAttempts} />
+    </>
+  );
 };
 
 export default QuizAttemptPage;

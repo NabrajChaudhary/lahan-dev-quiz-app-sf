@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const TwoColumnBlock = () => {
   return (
-    <section className="w-full flex justify-center py-12 md:py-24 lg:py-32 bg-gradient-to-br from-purple-50 via-background to-blue-50 dark:from-purple-950/20 dark:via-background dark:to-blue-950/20">
+    <section className="w-full flex justify-center py-12 md:py-24 bg-gradient-to-br from-purple-50 via-background to-blue-50 dark:from-purple-950/20 dark:via-background dark:to-blue-950/20">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="space-y-4 mt-4">
