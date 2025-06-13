@@ -7,12 +7,12 @@ import React from "react";
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
+      <Header />
       <AdBanner
         dataAdFormat="auto"
         dataAdSlot="8670085054"
         dataFullWidthResponsive={true}
       />
-      <Header />
 
       {children}
       <Footer />
