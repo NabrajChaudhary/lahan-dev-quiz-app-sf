@@ -19,7 +19,6 @@ const FeedbackForm = () => {
   const [loading, setLoading] = React.useState(false);
 
   const handleSubmit = (data: typeof defaultValues) => {
-    console.log("🚀 ~ handleSubmit ~ data:", data);
     setLoading(true);
     try {
       publicAxios
@@ -56,6 +55,7 @@ const FeedbackForm = () => {
           formLayout="one-col"
           loading={loading}
           onSubmit={handleSubmit}
+          buttonClass="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 min-w-2/5 w-fit mx-auto"
         />
       </div>
     </div>

@@ -80,7 +80,6 @@ export default function AuthCallback() {
   );
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectUrl = getCookie("redirect-url");
 
   useEffect(() => {
     const handleAuth = async () => {
@@ -114,6 +113,7 @@ export default function AuthCallback() {
         // Dispatch custom event to trigger profile fetch in AuthProvider
         window.dispatchEvent(new CustomEvent("auth:success"));
 
+        const redirectUrl = getCookie("redirect-url");
         // Delete redirect-url cookie BEFORE redirecting
 
         // Redirect after a short delay to allow profile fetch
@@ -129,7 +129,7 @@ export default function AuthCallback() {
     };
 
     handleAuth();
-  }, [router, redirectUrl, searchParams]);
+  }, [router, searchParams]);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">

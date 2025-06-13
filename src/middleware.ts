@@ -74,7 +74,7 @@ export async function middleware(request: NextRequest) {
 }
 
 const adminPath = ["/dashboard", "/admin"];
-const AuthPath = ["/login", "/forget-password", "/feedback"];
+const AuthPath = ["/login", "/forget-password"];
 
 export const config = {
   matcher: [

@@ -125,16 +125,18 @@ export default function ResultsCard({
             </svg>
           </div>
           <p className="text-lg font-medium mb-6">{message}</p>
-          <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
-            <Link href="/feedback">Give Feedback</Link>
-          </Button>
+          <div className="flex justify-around gap-1">
+            <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
+              <Link href="/feedback">Give Feedback</Link>
+            </Button>
 
-          <Button
-            onClick={onRestart}
-            className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
-          >
-            Return to quizes
-          </Button>
+            <Button
+              onClick={onRestart}
+              className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+            >
+              Return to quizes
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

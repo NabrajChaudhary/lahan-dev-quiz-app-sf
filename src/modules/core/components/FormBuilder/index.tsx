@@ -57,6 +57,7 @@ type FormBuilderProps = {
   submitText?: string;
   className?: string;
   loading: boolean;
+  buttonClass?: string;
 };
 
 export type FormFieldItem = {
@@ -79,6 +80,7 @@ const FormBuilder = ({
   submitText = "Submit",
   className,
   loading = false,
+  buttonClass,
 }: FormBuilderProps) => {
   const [filePreview, setFilePreview] = React.useState<Record<string, string>>(
     {}
@@ -453,7 +455,10 @@ const FormBuilder = ({
             </div>
             <Button
               type="submit"
-              className="w-full rounded-md py-2.5 font-medium transition-all flex items-center justify-center gap-2"
+              className={clsx(
+                "w-full rounded-md py-2.5 font-medium transition-all flex items-center justify-center gap-2",
+                buttonClass
+              )}
               disabled={loading}
             >
               {loading && (
