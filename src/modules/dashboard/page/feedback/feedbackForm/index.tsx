@@ -55,7 +55,7 @@ const FeedbackForm = () => {
           formLayout="one-col"
           loading={loading}
           onSubmit={handleSubmit}
-          buttonClass="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 min-w-2/5 w-fit mx-auto"
+          buttonClass="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 min-w-3/5 w-fit mx-auto cursor-pointer"
         />
       </div>
     </div>
