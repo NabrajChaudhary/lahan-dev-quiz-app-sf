@@ -21,12 +21,7 @@ const CategoriesModule = ({ data }: Props) => {
           <Link href="/dashboard/category/add-category">Add Category</Link>
         </Button>
       </div>
-      <DataTable
-        columns={columns}
-        data={categoryData}
-        filterColumn="course_name"
-        filterPlaceholder="Search by Course Name"
-      />
+      <DataTable columns={columns} data={categoryData} />
     </>
   );
 };

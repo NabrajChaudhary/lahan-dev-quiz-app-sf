@@ -1,7 +1,8 @@
+import PostsModule from "@/modules/dashboard/page/posts";
 import React from "react";
 
 const PostsPage = () => {
-  return <div>PostsPage</div>;
+  return <PostsModule />;
 };
 
 export default PostsPage;

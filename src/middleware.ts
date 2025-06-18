@@ -73,8 +73,8 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-const adminPath = ["/dashboard", "/admin"];
-const AuthPath = ["/login", "/forget-password"];
+const adminPath = ["/dashboard"];
+const AuthPath = ["/login", "/admin", "/forget-password"];
 
 export const config = {
   matcher: [
@@ -84,5 +84,6 @@ export const config = {
     "/login",
     "/forget-password",
     "/feedback",
+    "/admin",
   ],
 };

@@ -30,5 +30,6 @@ export type QuizResponse = {
   totalPages: number;
   total: number;
   skip: number;
+  limit: number;
   message: string;
 };

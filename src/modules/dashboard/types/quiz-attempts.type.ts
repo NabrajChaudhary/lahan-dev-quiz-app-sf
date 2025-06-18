@@ -6,6 +6,7 @@ export type QuizAttemptsResponse = {
   totalPages: number;
   total: number;
   skip: number;
+  limit: number;
   message: string;
   data: Array<QuizAttemptsItem>;
 };

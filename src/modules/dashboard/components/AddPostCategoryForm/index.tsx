@@ -1,11 +1,12 @@
 "use client";
 import FormBuilder from "@/modules/core/components/FormBuilder";
 import React from "react";
-import { categoryFormData } from "./form-data";
-import { formSchema } from "./category-schema";
+import { postCategoryFormData } from "./form-data";
+
 import { useRouter } from "next/navigation";
 import { publicAxios } from "@/modules/core/utils/axios";
 import { toast } from "sonner";
+import { formSchema } from "./post-category-schema";
 
 export const defaultValues = {
   title: "",
@@ -13,7 +14,7 @@ export const defaultValues = {
   description: "",
 };
 
-const CategoryForm = () => {
+const PostCategoryForm = () => {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
 
@@ -21,14 +22,10 @@ const CategoryForm = () => {
     setLoading(true);
     try {
       publicAxios
-        .post("/categories/create", data, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
+        .post("/posts/category/create", data)
         .then((data) => {
           toast.success(data.data.message);
-          router.push("/dashboard/category");
+          router.push("/dashboard/post-category");
           setLoading(false);
         })
         .catch((data) => {
@@ -47,11 +44,11 @@ const CategoryForm = () => {
   return (
     <div className="w-6/6">
       <div className="flex items-center">
-        <h2 className="text-3xl my-6 font-bold">Create Category</h2>
+        <h2 className="text-3xl my-6 font-bold">Create Post Category</h2>
       </div>
       <FormBuilder
         defaultValues={defaultValues}
-        formBuilderData={categoryFormData}
+        formBuilderData={postCategoryFormData}
         schema={formSchema}
         formLayout="one-col"
         loading={loading}
@@ -61,4 +58,4 @@ const CategoryForm = () => {
   );
 };
 
-export default CategoryForm;
+export default PostCategoryForm;

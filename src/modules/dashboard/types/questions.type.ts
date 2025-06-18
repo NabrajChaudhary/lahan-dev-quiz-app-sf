@@ -15,6 +15,7 @@ export type QuestionsResponse = {
   currentPage: number;
   totalPages: number;
   total: number;
+  limit: number;
   skip: number;
   message: string;
 };

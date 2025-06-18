@@ -6,6 +6,7 @@ export type ReviewResponse = {
   totalPages: number;
   total: number;
   skip: number;
+  limit: number;
   message: string;
 };
 

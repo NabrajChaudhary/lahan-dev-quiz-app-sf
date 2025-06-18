@@ -5,14 +5,22 @@ import { Button } from "@/modules/core/components/ui/button";
 import Link from "next/link";
 import { DataTable } from "@/modules/core/components/Table";
 import { getQuestionsColumns } from "./questionColumn";
+import PaginationComponent from "@/modules/core/components/Pagination";
+import { useRouter } from "next/navigation";
 
 type Props = {
   data: QuestionsResponse;
 };
 
 const QuestionsModule = ({ data }: Props) => {
-  const { data: QuestionsData } = data;
+  const { data: QuestionsData, currentPage, total, totalPages, limit } = data;
   const columns = getQuestionsColumns();
+  const router = useRouter();
+
+  const onPageChange = (page: number) => {
+    router.push(`?page=${page}`);
+  };
+
   return (
     <>
       <div className="flex justify-start my-4">
@@ -21,10 +29,17 @@ const QuestionsModule = ({ data }: Props) => {
         </Button>
       </div>
       <DataTable
+        initialPageSize={limit}
         columns={columns}
         data={QuestionsData}
-        filterColumn="course_name"
-        filterPlaceholder="Search by Course Name"
+      />
+      <PaginationComponent
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+        totalPages={totalPages}
+        itemsPerPage={limit}
+        totalItems={total}
+        showInfo
       />
     </>
   );

@@ -93,24 +93,6 @@ export default function MobileNav() {
             </Link>
           </SheetClose>
 
-          {/* <SheetClose asChild>
-            <Link
-              href="#features"
-              className="flex items-center py-2 text-base font-medium border-b border-border"
-              onClick={() => setOpen(false)}
-            >
-              Features
-            </Link>
-          </SheetClose>
-          <SheetClose asChild>
-            <Link
-              href="#exams"
-              className="flex items-center py-2 text-base font-medium border-b border-border"
-              onClick={() => setOpen(false)}
-            >
-              Exams
-            </Link>
-          </SheetClose> */}
           <SheetClose asChild>
             <Link
               href="/quiz"
@@ -120,6 +102,26 @@ export default function MobileNav() {
               Quiz
             </Link>
           </SheetClose>
+
+          <SheetClose asChild>
+            <Link
+              href="/blogs"
+              className="flex items-center py-2 text-base font-medium border-b border-border"
+              onClick={() => setOpen(false)}
+            >
+              Blogs
+            </Link>
+          </SheetClose>
+          <SheetClose asChild>
+            <Link
+              href="/testimonials"
+              className="flex items-center py-2 text-base font-medium border-b border-border"
+              onClick={() => setOpen(false)}
+            >
+              Testimonials
+            </Link>
+          </SheetClose>
+
           {!user ? (
             <div className="flex flex-col gap-2 pt-4">
               <Button

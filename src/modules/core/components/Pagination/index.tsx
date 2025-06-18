@@ -8,7 +8,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "../ui/pagination";
+} from "@/modules/core/components/ui/pagination";
 
 interface PaginationComponentProps {
   currentPage: number;
@@ -72,15 +72,15 @@ export default function PaginationComponent({
   };
 
   const pageNumbers = getPageNumbers();
-  const currentItemsCount = Math.min(
-    itemsPerPage,
-    totalItems - (currentPage - 1) * itemsPerPage
-  );
+
+  // Correct calculation for current items range
+  const startItem = (currentPage - 1) * itemsPerPage + 1;
+  const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between my-4">
       {showInfo && (
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-gray-600 inline-flex">
           Page {currentPage} of {totalPages}
         </div>
       )}
@@ -178,7 +178,13 @@ export default function PaginationComponent({
 
       {showInfo && (
         <div className="text-sm text-gray-600">
-          Showing {currentItemsCount} of {totalItems} items
+          {totalItems > 0 ? (
+            <>
+              Showing {startItem}-{endItem} of {totalItems} items
+            </>
+          ) : (
+            <>No items to display</>
+          )}
         </div>
       )}
     </div>

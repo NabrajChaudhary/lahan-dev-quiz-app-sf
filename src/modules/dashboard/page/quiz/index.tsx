@@ -20,12 +20,7 @@ const QuizModule = ({ data }: Props) => {
           <Link href="/dashboard/quiz/create-quiz">Create Quiz</Link>
         </Button>
       </div>
-      <DataTable
-        columns={columns}
-        data={quizData}
-        filterColumn="course_name"
-        filterPlaceholder="Search by Course Name"
-      />
+      <DataTable columns={columns} data={quizData} />
     </>
   );
 };

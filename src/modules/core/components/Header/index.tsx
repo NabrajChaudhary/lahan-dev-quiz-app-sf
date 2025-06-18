@@ -28,22 +28,22 @@ const Header = () => {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-1">
               <Link
-                href="#features"
+                href="/blogs"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-4 py-2"
               >
-                Features
-              </Link>
-              <Link
-                href="/"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-4 py-2"
-              >
-                Steps
+                Blogs
               </Link>
               <Link
                 href="/quiz"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-4 py-2"
               >
                 Quiz
+              </Link>
+              <Link
+                href="/"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground px-4 py-2"
+              >
+                Testimonials
               </Link>
 
               {user ? (

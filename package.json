@@ -23,6 +23,7 @@
     "@radix-ui/react-switch": "^1.2.5",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tanstack/react-table": "^8.21.3",
+    "@tinymce/tinymce-react": "^6.2.1",
     "@vercel/kv": "^3.0.0",
     "ai": "^4.3.16",
     "axios": "^1.9.0",
@@ -37,6 +38,7 @@
     "react-dom": "^19.0.0",
     "react-headroom": "^3.2.1",
     "react-hook-form": "^7.57.0",
+    "react-html-parser": "^2.0.2",
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.3.0",
     "zod": "^3.25.48"

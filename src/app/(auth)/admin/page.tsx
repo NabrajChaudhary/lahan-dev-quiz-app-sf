@@ -1,7 +1,8 @@
+import AdminLogin from "@/modules/auth/components/AdminLogin";
 import React from "react";
 
-const AdminLogin = () => {
-  return <div>AdminLogin</div>;
+const AdminPage = () => {
+  return <AdminLogin />;
 };
 
-export default AdminLogin;
+export default AdminPage;

@@ -62,7 +62,7 @@ const items = [
   },
   {
     title: "Posts Category",
-    url: "/dashboard/posts-category",
+    url: "/dashboard/post-category",
     icon: Notebook,
   },
   {
