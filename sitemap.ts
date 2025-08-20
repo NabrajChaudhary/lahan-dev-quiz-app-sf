@@ -15,7 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://lahanquiz.online/quiz/[id]",
+      url: "https://lahanquiz.online/quiz/general-knowledge",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: "https://lahanquiz.online/quiz/science",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.5,
