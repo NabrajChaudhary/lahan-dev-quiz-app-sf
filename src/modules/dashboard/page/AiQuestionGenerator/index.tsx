@@ -181,8 +181,8 @@ export default function AiQuestionGenerator({ categoryOptions }: IProps) {
                       name="count"
                       type="number"
                       min="1"
-                      max="20"
-                      defaultValue="5"
+                      max="100"
+                      defaultValue="10"
                       required
                     />
                   </div>
