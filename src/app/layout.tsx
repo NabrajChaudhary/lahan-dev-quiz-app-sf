@@ -34,7 +34,7 @@ export default async function RootLayout({
   // const auth = await getProfile(token?.value);
   return (
     <html lang="en">
-      <GoogleAdsense pId="7140211619056785" />
+      {/* <GoogleAdsense pId="7140211619056785" /> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
