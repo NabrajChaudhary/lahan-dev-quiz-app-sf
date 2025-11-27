@@ -8,7 +8,8 @@ export async function GET(request: NextRequest) {
     return Response.json({ revalidated: "false" }, { status: 400 });
   }
   tags?.split(",").forEach((x) => {
-    revalidateTag(x);
+    console.log("🚀 ~ GET ~ x:", x)
+    revalidateTag(x, x);
   });
   // revalidateTag(tag as string);
   return Response.json({ revalidated: "success", tags: tags });

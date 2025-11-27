@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+
   /* config options here */
   images: {
     remotePatterns: [
@@ -25,6 +26,7 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     formats: ["image/avif", "image/webp"],
     unoptimized: true, // Important for blob URLs and base64
+
   },
 };
 

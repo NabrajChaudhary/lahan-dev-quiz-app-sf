@@ -11,7 +11,6 @@ import type { UserProfileType } from "@/modules/core/types/core.types";
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [profileData, setProfileData] = useState<UserProfileType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  console.log("🚀 ~ AuthProvider ~ isLoading:", isLoading);
 
   const fetchProfile = async () => {
     const authToken = getCookie("auth-token");
