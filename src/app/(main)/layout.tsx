@@ -8,11 +8,11 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      <AdBanner
+      {/* <AdBanner
         dataAdFormat="auto"
         dataAdSlot="8670085054"
         dataFullWidthResponsive={true}
-      />
+      /> */}
 
       {children}
       <Footer />

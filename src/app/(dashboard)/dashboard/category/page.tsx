@@ -8,10 +8,10 @@ const CategoryPage = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("auth-token");
 
-  const getAllCategories = await getAllQuizCategories(token?.value);
+  // const getAllCategories = await getAllQuizCategories(token?.value);
   return (
     <Suspense fallback={<p>..loading...</p>}>
-      <CategoriesModule data={getAllCategories} />
+      {/* <CategoriesModule data={getAllCategories} /> */}
     </Suspense>
   );
 };

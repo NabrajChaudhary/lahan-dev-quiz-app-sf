@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { executeFetch } from "./lib/execute-fetch";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const authToken = request.cookies.get("auth-token")?.value;
